@@ -49,14 +49,23 @@ const App: React.FC = () => {
     setInputText(e.target.value);
   }, []);
 
-  const handleComplete = useCallback((id: number) => {
-    setTodos((prevTodos) =>
-      prevTodos.map((todo) =>
-        todo.id === id ? { ...todo, state: !todo.state } : todo
-      )
-    );
-  }, []);
+  const handleComplete = useCallback(
+    (id: number) => {
+      setTodos((prevTodos) =>
+        prevTodos.map((todo) =>
+          todo.id === id ? { ...todo, state: !todo.state } : todo
+        )
+      );
+    },
+    [todos]
+  );
 
+  const handleDelete = useCallback(
+    (id: number) => {
+      setTodos(todos.filter((todo) => todo.id !== id));
+    },
+    [todos]
+  );
   return (
     <div className="container">
       <h1>투두리스트 ~~~ 🥱🥺🍀</h1>
@@ -72,7 +81,7 @@ const App: React.FC = () => {
             <button onClick={() => handleComplete(todo.id)}>
               {todo.state ? "완료됨" : "미완료"}
             </button>
-            <button>삭제</button>
+            <button onClick={() => handleDelete(todo.id)}>삭제</button>
           </li>
         ))}
       </div>
