@@ -1,7 +1,8 @@
 import { useState, useCallback, useRef, ChangeEvent } from "react";
+import TodoList from "./components/TodoList";
 import "./App.css";
 
-interface TodoProps {
+export interface TodoProps {
   id: number;
   text: string;
   state: boolean;
@@ -74,17 +75,11 @@ const App: React.FC = () => {
       <button type="submit" onClick={onClick}>
         +
       </button>
-      <div className="todoList">
-        {todos.map((todo) => (
-          <li key={todo.id}>
-            {todo.text}
-            <button onClick={() => handleComplete(todo.id)}>
-              {todo.state ? "완료됨" : "미완료"}
-            </button>
-            <button onClick={() => handleDelete(todo.id)}>삭제</button>
-          </li>
-        ))}
-      </div>
+      <TodoList
+        todos={todos}
+        handleComplete={handleComplete}
+        handleDelete={handleDelete}
+      />
     </div>
   );
 };
