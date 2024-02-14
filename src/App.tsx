@@ -27,7 +27,6 @@ const App: React.FC = () => {
   ]);
 
   const [inputText, setInputText] = useState("");
-  const [complete, setComplete] = useState("완료");
 
   const nextId = useRef<number>(3);
 
@@ -50,8 +49,12 @@ const App: React.FC = () => {
     setInputText(e.target.value);
   }, []);
 
-  const handleComplete = useCallback(() => {
-    setComplete("완료됨");
+  const handleComplete = useCallback((id: number) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, state: !todo.state } : todo
+      )
+    );
   }, []);
 
   return (
@@ -66,7 +69,10 @@ const App: React.FC = () => {
         {todos.map((todo) => (
           <li key={todo.id}>
             {todo.text}
-            <button onClick={handleComplete}>{complete}</button>
+            <button onClick={() => handleComplete(todo.id)}>
+              {todo.state ? "완료됨" : "미완료"}
+            </button>
+            <button>삭제</button>
           </li>
         ))}
       </div>
