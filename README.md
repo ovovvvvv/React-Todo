@@ -2,6 +2,12 @@
 
 투두 리스트 개발을 통한 점진적인 리액트 학습
 
+<div align="center">
+  
+![68e28c0eb2ffd6ee5267867b6c76c31d](https://github.com/co-coding-review/React-Todo/assets/125727432/423fe836-5554-49f6-bab5-0825cd1d0d62)
+
+</div>
+
 ## 사전 과제
 
 리액트만을 이용해 투두리스트를 구현해 본다
@@ -26,3 +32,5 @@
 - 레포를 fork한다.
 - npm install
 - 작업후 자신의 깃허브 아이디로 브렌치를 분기해 PR한다.
+  
+
